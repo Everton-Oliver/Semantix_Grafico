@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compitle" content="IE=edge">
+<title>Semantix</title>
+<meta name="viewport" content ="width=device-width, initial-scale=1">
+<script type="main.js"></script>
+<style type="text/css"></style>
+<body>
+<div id="grafico"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+
+<canvas id="primeiroGrafico"></canvas>
+
+
+<script>
+
+function grafico (){
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+if(this.readyState === 4 && this.status === 200) {
+var dados = JSON.parse(xhttp.responseText);
+var text=""
+for (i = 0; i < dados.length; i++) {
+text += dados[i].name + "<br>";
+}
+document.getElementById('grafico').innerHTML = text;
+}
+
+
+
+}
+
+
+var url = "https://private-afe609-testefront.apiary-mock.com/anual-result";
+xhttp.open('GET', url, true);
+xhttp.send();
+
+}
+
+let primeiroGrafico = document.getElementById('primeiroGrafico').getContext('2d');
+
+
+
+
+
+
+grafico();
+
+
+</script>
+</body>
+</html>
+
